@@ -22,7 +22,9 @@ public class SerialPort {
 	}
 	
 	public void addEventListener(SerialPortEventListener listener) {
-		// TODO should we be doing anything here?
+	}	
+	
+	public void removeEventListener() {
 	}
 	
 	public InputStream getInputStream() { return handler.getInputStream(); }
@@ -35,4 +37,8 @@ public class SerialPort {
 	public void setOutputBufferSize(int i) {}
 	public void enableReceiveTimeout(int i) {}
 	public void notifyOnCTS(boolean b) {}
+	
+	public void close() {
+		// TODO close the streams after this and stop them working!
+	}
 }
