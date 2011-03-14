@@ -13,7 +13,7 @@
 	
 	<repositories>
 		<repository>
-			<id>dev.frontlinesms.repo</id>
+			<id>frontlinesms.repo</id>
 			<name>FrontlineSMS repository</name>
 			<url>http://dev.frontlinesms.com/m2repo</url>
 		</repository>
