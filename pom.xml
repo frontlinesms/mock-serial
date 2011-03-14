@@ -21,7 +21,7 @@
 	
 	<distributionManagement>
 		<repository>
-			<id>dev.frontlinesms.repo</id>
+			<id>frontlinesms.repo</id>
 			<name>FrontlineSMS repository</name>
 			<url>ftp://dev.frontlinesms.com</url>
 		</repository>
