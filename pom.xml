@@ -3,7 +3,7 @@
 	<groupId>net.frontlinesms.test</groupId>
 	<artifactId>serial-test</artifactId>
 	<name>Java Serial Test</name>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<description>Test Classes for Serial Abstraction API for Java</description>
 	
 	<scm>
