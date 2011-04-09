@@ -1,5 +1,7 @@
 package serial.mock;
 
+import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.Map;
 
 import serial.SerialClassFactory;
@@ -12,6 +14,16 @@ import static org.mockito.Mockito.*;
 public class MockSerial {
 	@SuppressWarnings("unchecked")
 	private static final Map<String, CommPortIdentifier> identifiers = mock(Map.class);
+	
+	private static boolean multipleOwnershipAllowed;
+	
+	public static void setMultipleOwnershipAllowed(boolean multipleOwnershipAllowed) {
+		MockSerial.multipleOwnershipAllowed = multipleOwnershipAllowed;
+	}
+	
+	public static boolean isMultipleOwnershipAllowed() {
+		return multipleOwnershipAllowed;
+	}
 	
 	public static void setIdentifier(String portName, CommPortIdentifier identifier) {
 		when(identifiers.get(portName)).thenReturn(identifier);
@@ -33,4 +45,23 @@ public class MockSerial {
 	public static Map<String, CommPortIdentifier> getMock() {
 		return identifiers;
 	}
+
+	public static Enumeration getPortIdentifiers() {
+		return new IteratorEnumeration(identifiers.values());
+	}
+}
+
+class IteratorEnumeration implements Enumeration {
+	private final Iterator i;
+    public IteratorEnumeration(Iterable iterable) {
+        this.i = iterable.iterator();
+    }
+
+    public boolean hasMoreElements() {
+    	return i.hasNext();
+    }
+    
+    public Object nextElement() {
+    	return i.next();
+    }
 }
