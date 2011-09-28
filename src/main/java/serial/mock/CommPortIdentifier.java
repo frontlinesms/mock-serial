@@ -25,6 +25,10 @@ public class CommPortIdentifier {
 		return this.name;
 	}
 	
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+	
 	public int getPortType() { return PORT_SERIAL; }
 	
 	public synchronized boolean isCurrentlyOwned() { return this.owner != null; }
