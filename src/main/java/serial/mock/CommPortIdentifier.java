@@ -17,6 +17,7 @@ public class CommPortIdentifier {
 		this.handler = handler;
 	}
 
+//> ACCESSORS
 	public synchronized String getCurrentOwner() {
 		return this.owner;
 	}
@@ -33,6 +34,11 @@ public class CommPortIdentifier {
 	
 	public synchronized boolean isCurrentlyOwned() { return this.owner != null; }
 	
+	public String toString() {
+		return "<" + super.toString() + ": '" + name + "', owned by '" + owner + "' with handler '" + handler + "'>";
+	}
+	
+//> COMMS METHODS
 	public synchronized SerialPort open(String appname, int timeout) throws PortInUseException {
 		if(!MockSerial.isMultipleOwnershipAllowed() && isCurrentlyOwned()) {
 			throw new PortInUseException("This port is already in use by: " + owner);
@@ -42,6 +48,7 @@ public class CommPortIdentifier {
 		}
 	}
 	
+//> STATIC METHODS
 	public static CommPortIdentifier getPortIdentifier(String portName) throws NoSuchPortException {
 		CommPortIdentifier cpi = MockSerial.getIdentifier(portName);
 		if(cpi == null) {
